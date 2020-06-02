@@ -21,6 +21,7 @@ clear all
 close all
 
 % What can be changed?
+% - Directory of the lava tube model file (Step 1)
 % - Reducing factor: how many data points do you find acceptable (Step 2)
 % - Vertices per section: how many points do you want per section (Step 2)
 % - Alternatively: how many sections do you want (Step 2)
@@ -37,16 +38,17 @@ close all
 %% Step 1: Import cavity coordinates
 
 % Either: import a file directly displaying coordinates 
-% Cavity_coordinates = importdata('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\MatLab Model Maker\Cavity_Test_Data_Coords_4.csv'); % Change the directory accordingly
+Cavity_coordinates = importdata('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Matlab model maker\Cavity_Test_Data_Coords.csv'); % Change the directory accordingly
 
 % Or: import a 3D model file (for example a lava tube model), and take one
 % of its properties to be the coordinate file
-[A,~] = stlread('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\cueva-de-los-siete-lagos\source\agua_text\Los lagos ok.stl');
-Cavity_coordinates = A.Points;
+% [A,~] = stlread('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\cueva-de-los-siete-lagos\source\agua_text\Los lagos ok.stl');
+% Cavity_coordinates = A.Points;
 %% Step 2: Do some data processing on these coordinates
 
-% First: reduce the number of points (for example, by a factor 50
-Reduce_factor = 50;
+% First: reduce the number of points (for example, by a factor 50)
+% Idea: each 50th coordinate is picked for a fair representation of points
+Reduce_factor = 1;
 
 Reduced_index = 1;
 Reduced_cavity_coordinates = zeros(floor(length(Cavity_coordinates(:,1))/Reduce_factor),3);
@@ -57,13 +59,16 @@ for a = 1:length(Cavity_coordinates(:,1))
     end
 end
 clear a
-Cavity_coordinates = Reduced_cavity_coordinates;
+
+% The 'Cavity_coordinates' variable is reset
+Cavity_coordinates = Reduced_cavity_coordinates*100;
 
 % Count occurrence of all y-coordinates, on which we do the sectioning
 y_coords = Cavity_coordinates(:,2);
 
 % A fairly inefficient way of checking whether there are enough vertices
-% per section (enough being 3 or more)
+% per section (enough being 3 or more). However, this has not been a major
+% issue so far
 Bin_count = [1:length(Cavity_coordinates(:,1))];
 y_occur = zeros(length(y_coords),1);
 index = 1;
@@ -97,12 +102,12 @@ if Interpolation_bool == true
     % data such that at least 3 vertices are present per section.
     
     % Two ways of interpolation (more can be made)
-    Fixed_number_vertices_bool = false; % Method 1: have a fixed number of vertices per section
-    Fixed_number_section_bool = true; % Method 2: have a fixed number of sections
+    Fixed_number_vertices_bool = true; % Method 1: have a fixed number of vertices per section
+    Fixed_number_section_bool = false; % Method 2: have a fixed number of sections
     
     if Fixed_number_vertices_bool==true % Method 1: fixed number of vertices per section
         % Choose how many points you want per section:
-        Vertices_per_section = 6;
+        Vertices_per_section = 3;
 
         Number_of_sections = floor(length(Cavity_coordinates(:,1))/Vertices_per_section); % Flooring, as you want at a minimum three vertices per section
         Leftovers = mod(length(Cavity_coordinates(:,1)),Vertices_per_section); % For if the section number is not a divisor of the number of coordinates
@@ -112,7 +117,7 @@ if Interpolation_bool == true
         [~,Sorted_y] = sort(Cavity_coordinates(:,2)); % Sort the y-coordinates
         Sorted_cavity_coordinates = Cavity_coordinates(Sorted_y,:); % Sort the whole matrix according to these y-coordinates
 
-        for a=1:Leftovers_front % The 'leftovers' are partly places in the first section
+        for a=1:Leftovers_front % The 'leftovers' are partly placed in the first section
             Middle_coor = Leftovers_front + ceil(Vertices_per_section/2); % This is the y-coordinate of the middle of a group of coordinates of size 'vertices_per_section'
             Sorted_cavity_coordinates(a,2) = Sorted_cavity_coordinates(Middle_coor,2); % Let these coordinates 'adopt' the one of the middle of the group
         end
@@ -123,7 +128,7 @@ if Interpolation_bool == true
             for b=1:Vertices_per_section % For each section, we want this number of vertices
                 Middle_coor = Leftovers_front + (a-1)*Vertices_per_section + ceil(Vertices_per_section/2); % Previously to this section, the 'leftovers_front' and (a-1) sections have been gone through
                 Sorted_cavity_coordinates(Current_section_index,2) = Sorted_cavity_coordinates(Middle_coor,2); % Let all coordinates of the section adopt the same y-coordinate 
-                Current_section_index = Current_section_index + 1; %So that the indexing of 'Sorted_cavity_coordinates' still works
+                Current_section_index = Current_section_index + 1; % So that the indexing of 'Sorted_cavity_coordinates' still works
             end
         end
         clear a
@@ -198,6 +203,8 @@ for a=1:length(Cavity_coordinates(:,1))
         Cavity_coordinates(a,3) = Cavity_coordinates(a,3) + 0.001;
     end
 end
+% If this is a major problem later on, this change can be reversed later on
+% in the file
 
 % An idea I had; round the coordinates for more interpolation. It doesn't
 % turn out to be needed
@@ -205,19 +212,18 @@ end
 
 %% Step 3: define parameters, do set-up
 % Define important parameters
-Cavity_depth = 10; % depth in meter
+Cavity_depth = 1; % depth in meter
 Rock_density = 2.5; % density in g/cm³
-Sizing_factor = 1.5; % To deal with edge effects
-Model_name = ['Comparison_Test']; % Model_name = ['Los_Lagos_May27_reduce10_100sections']; % The name you want your model to have
+Sizing_factor = 0.1; % To deal with edge effects
+Model_name = ['Test_Large']; % Model_name = ['Los_Lagos_May27_reduce10_100sections']; % The name you want your model to have
 Stations_bool = true; % if you want to also export stations
 Station_resolution = 50; % if you want stations, how many do you want (this is the square root of it)
 
 %% Step 4: open up the file, define the bodies
 feature('DefaultCharacterSet', 'UTF8'); % Needed mostly to make the ³-character work...
-%slCharacterEncoding('UTF-8')
 File_name = ['Sec_',Model_name,'.model']; % The file extension is always .model
 fid = fopen(File_name,'w'); % Open the file (this also works if the file does not exist yet)
-fprintf(fid, '<?xml version="1.0" encoding="UTF-8"?>\n'); % I am not sure what this does; result in proper encoding?
+fprintf(fid, '<?xml version="1.0" encoding="UTF-8"?>\n'); % Make sure the encoding of the file works
 fprintf(fid, '<geodata name="Test Model">\n'); % Open the geodata class; the main class of the whole file
 
 % Define a reference body (never needs to be changed, apart from maybe the colour)
@@ -234,7 +240,7 @@ fprintf(fid, '<property name="body" value="cavity"> \n    <property name="densit
 % Define 'wider' model to circumvent issues with boundary effects, based on
 % the dimensions of the cavity
 % Here, we need to look how big these extensions must be
-% Interpretation: the total model has the size of the cavity, times 2*Sinzing_factor.
+% Interpretation: the total model has the size of the cavity, times 2*Sizing_factor.
 % This can be tweaked!
 Limit_vector = [];
 
@@ -268,7 +274,7 @@ Export_no_cavity_model(Rock_density, Model_name, Limit_vector);
 % Later task: find out what the optimal way of sectioning is
 
 Cavity_y_coordinates = sort(Cavity_coordinates(:,2));
-Cavity_y_coordinates_unique = unique(Cavity_y_coordinates); % Look for all unique y coordinates. At this point, each unique y-coordinate should have at least two neighbouring points with it with equal y-coordinates
+Cavity_y_coordinates_unique = unique(Cavity_y_coordinates); % Look for all unique y coordinates. At this point, each unique y-coordinate should have at least two neighbouring points with equal y-coordinates
 Number_of_sections = length(Cavity_y_coordinates_unique); % For each unique y-coordinate, a section ought to be present
 
 Vertex_cell = cell(Number_of_sections,1);

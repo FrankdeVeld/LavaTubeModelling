@@ -31,7 +31,7 @@ close all
 
 % Cavity_coordinates = importdata('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\MatLab Model Maker\Cavity_Test_Data_Coords_4.csv'); % Change the directory accordingly
 
-[A,~] = stlread('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\cueva-de-los-siete-lagos\source\agua_text\Los lagos ok.stl');
+[A,~] = stlread('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\galapagos-lava-tube\source\Mesh SCruz2 levigata\Mesh SCruz2 levigata.stl');
 Cavity_coordinates = A.Points;
 Reduced_index = 1;
 Reduce_factor = 50;
@@ -50,9 +50,9 @@ Cavity_coordinates = Reduced_cavity_coordinates;
 
 Rock_density = 2.5; % density in g/cm³
 Cavity_depth = 10; % How many meters under the surface the cave is located
-Sizing_factor = 1.5; % To deal with edge effects
+Sizing_factor = 0.25; % To deal with edge effects
 Station_resolution = 50; % Square root how number of stations wanted
-Voxel_resolution = 500; % Number of voxels per direction. Note: in total 30.000.000 voxels are allowed.
+Voxel_resolution = 50; % Number of voxels per direction. Note: in total 30.000.000 voxels are allowed.
 
 Model_name = ['Comparison_Test']; % The name you want your model to have
 
@@ -100,12 +100,12 @@ Write_basic_model_file(Rock_density, Model_name, Limit_vector, res_y-2);
 %% Step 2: Create a voxel file for the cave, and one without any cave for comparison
 
 % With cavity
-File_name = ['Vox_Voxel_with_cavity_',Model_name,'.vxo'];
+File_name = ['Vox_High_res_Galapagos_cavity',Model_name,'.vxo'];
 Cavity_bool = true;
 Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_vector,Cavity_bool,File_name,Grid_size,Grid)
 
 % Without cavity
-File_name = ['Vox_Voxel_no_cavity_',Model_name,'.vxo'];
+File_name = ['Vox_High_res_Galapagos_no_cavity',Model_name,'.vxo'];
 Cavity_bool = false;
 Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_vector,Cavity_bool,File_name,Grid_size,Grid)
 
