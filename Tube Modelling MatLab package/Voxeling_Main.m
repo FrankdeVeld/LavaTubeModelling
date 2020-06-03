@@ -34,9 +34,18 @@ close all
 % Cavity_coordinates = importdata('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\MatLab Model Maker\Cavity_Test_Data_Coords_4.csv'); % Change the directory accordingly
 [A,~] = stlread('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\galapagos-lava-tube\source\Mesh SCruz2 levigata\Mesh SCruz2 levigata.stl');
 Cavity_coordinates = A.Points;
-Reduce_factor = 50;
+Reduce_factor = 10;
 
-Cavity_coordinates = Reduce_coordinates(Cavity_coordinates, Reduce_factor);
+% What this does; make the cavity Sizing_Factor times larger, or stretch it
+% by a factor Stretching_Factor_H horizontally.
+% Vertical stretching is a bit trickier an di will think about this
+% Alternative; stretch it until the average radius/length is .../... meter
+Sizing_Factor = 1;
+Stretching_Factor_H = 3;
+
+Cavity_coordinates = Sizing_Factor*Reduce_coordinates(Cavity_coordinates, Reduce_factor);
+Cavity_coordinates(:,1) = Stretching_Factor_H*Cavity_coordinates(:,1);
+Cavity_coordinates(:,2) = Stretching_Factor_H*Cavity_coordinates(:,2);
 
 %% Step 1: Export a basic .model file
 % Main properties: dimensions of whole model, bodies
@@ -47,7 +56,7 @@ Sizing_factor = 1.5; % To deal with edge effects
 Station_resolution = 50; % Square root how number of stations wanted
 Voxel_resolution = 250; % Number of voxels per direction. Note: in total 30.000.000 voxels are allowed.
 
-Model_name = ['Demo_Test_2']; % The name you want your model to have
+Model_name = ['sizing_Test_sh3']; % The name you want your model to have
 
 Cavity_limit_vector = [];
 for a=1:3
@@ -117,10 +126,10 @@ Export_stations_file(Limit_vector,Station_resolution,Model_name) % ASSUMING flat
 % the .stations file.
 
 % Put this at true if you have results to analyse
-Calculation_bool = true;
+Calculation_bool = false;
 
 if Calculation_bool == true
-    With_cavity_results = xml2struct('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Tube Modelling MatLab package\Vox_Cavity_Demo_Test_2_Results.stations');
+    With_cavity_results = xml2struct('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Tube Modelling MatLab package\Sizing Tests and Results\f10_With_Cavity.stations');
 
     With_cavity_results_array = [];
     for a=1:length(With_cavity_results.geodata.vertex(1,:))
@@ -136,7 +145,7 @@ if Calculation_bool == true
     end
     clear a
 
-    No_cavity_results = xml2struct('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Tube Modelling MatLab package\Vox_No_Cavity_Demo_Test_2_Results.stations');
+    No_cavity_results = xml2struct('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Tube Modelling MatLab package\Sizing Tests and Results\f10_No_Cavity.stations');
 
     No_cavity_results_array = [];
     for a=1:length(No_cavity_results.geodata.vertex(1,:))
@@ -151,31 +160,32 @@ if Calculation_bool == true
         No_cavity_results_array(a,3) = str2num(Temp_result);
     end
     clear a
-    %%
+
     % With the results of both files, we can make a graph of the difference
     % between the models with and without cavity. Note that the range is larger
     % than the one of the cavity for reducing edge effects. However, since the
     % edge effect is present in both models, taking the difference (almost) eliminates
     % that.
-    figure()
-    scatter3(With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
-    title('Difference between the signals of models with and without a cavity','interpreter','latex')
-    xlabel('x-coordinate [m]','interpreter','latex')
-    ylabel('y-coordinate [m]','interpreter','latex')
-    zlabel('Gravity Difference [mGal]','interpreter','latex')
     
-    figure()
-    stem3(With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
-    title('Difference between the signals of models with and without a cavity','interpreter','latex')
-    xlabel('x-coordinate [m]','interpreter','latex')
-    ylabel('y-coordinate [m]','interpreter','latex')
-    zlabel('Gravity Difference [mGal]','interpreter','latex')
+%     figure()
+%     scatter3(With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
+%     title('Difference between the signals of models with and without a cavity','interpreter','latex')
+%     xlabel('x-coordinate [m]','interpreter','latex')
+%     ylabel('y-coordinate [m]','interpreter','latex')
+%     zlabel('Gravity Difference [mGal]','interpreter','latex')
+%     
+%     figure()
+%     stem3(With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
+%     title('Difference between the signals of models with and without a cavity','interpreter','latex')
+%     xlabel('x-coordinate [m]','interpreter','latex')
+%     ylabel('y-coordinate [m]','interpreter','latex')
+%     zlabel('Gravity Difference [mGal]','interpreter','latex')
     
     tri = delaunay(With_cavity_results_array(:,1), With_cavity_results_array(:,2));
     figure()
     axis tight
     trisurf(tri, With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
-    title('Difference between the signals of models with and without a cavity','interpreter','latex')
+    title('Difference between the signals of models with and without a cavity, Sizing 10','interpreter','latex')
     xlabel('x-coordinate [m]','interpreter','latex')
     ylabel('y-coordinate [m]','interpreter','latex')
     zlabel('Gravity Difference [mGal]','interpreter','latex')
@@ -184,7 +194,77 @@ if Calculation_bool == true
     c.Label.Interpreter = 'latex';
     c.Label.FontSize = 11;
     
-    labels = {'x-coordinate [m]','y-coordinate [m]','Gravity Difference [mGal]','Difference between the signals of models with and without a cavity' };
+    labels = {'x-coordinate [m]','y-coordinate [m]','Gravity Difference [mGal]','Difference between the signals of models with and without a cavity, Sizing 10' };
+    ContourPlot(2,With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3),labels)
+    
+    
+    
+    With_cavity_results = xml2struct('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Tube Modelling MatLab package\Sizing Tests and Results\f1_With_Cavity.stations');
+
+    With_cavity_results_array = [];
+    for a=1:length(With_cavity_results.geodata.vertex(1,:))
+
+        Temp_x = With_cavity_results.geodata.vertex{1,a}.Attributes.x;
+        Temp_y = With_cavity_results.geodata.vertex{1,a}.Attributes.y;
+
+        Temp_result = With_cavity_results.geodata.vertex{1,a}.property.Attributes.value;
+
+        With_cavity_results_array(a,1) = str2num(Temp_x);
+        With_cavity_results_array(a,2) = str2num(Temp_y);
+        With_cavity_results_array(a,3) = str2num(Temp_result);
+    end
+    clear a
+
+    No_cavity_results = xml2struct('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Tube Modelling MatLab package\Sizing Tests and Results\f1_No_Cavity.stations');
+
+    No_cavity_results_array = [];
+    for a=1:length(No_cavity_results.geodata.vertex(1,:))
+
+        Temp_x = No_cavity_results.geodata.vertex{1,a}.Attributes.x;
+        Temp_y = No_cavity_results.geodata.vertex{1,a}.Attributes.y;
+
+        Temp_result = No_cavity_results.geodata.vertex{1,a}.property.Attributes.value;
+
+        No_cavity_results_array(a,1) = str2num(Temp_x);
+        No_cavity_results_array(a,2) = str2num(Temp_y);
+        No_cavity_results_array(a,3) = str2num(Temp_result);
+    end
+    clear a
+
+    % With the results of both files, we can make a graph of the difference
+    % between the models with and without cavity. Note that the range is larger
+    % than the one of the cavity for reducing edge effects. However, since the
+    % edge effect is present in both models, taking the difference (almost) eliminates
+    % that.
+    
+%     figure()
+%     scatter3(With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
+%     title('Difference between the signals of models with and without a cavity','interpreter','latex')
+%     xlabel('x-coordinate [m]','interpreter','latex')
+%     ylabel('y-coordinate [m]','interpreter','latex')
+%     zlabel('Gravity Difference [mGal]','interpreter','latex')
+%     
+%     figure()
+%     stem3(With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
+%     title('Difference between the signals of models with and without a cavity','interpreter','latex')
+%     xlabel('x-coordinate [m]','interpreter','latex')
+%     ylabel('y-coordinate [m]','interpreter','latex')
+%     zlabel('Gravity Difference [mGal]','interpreter','latex')
+    
+    tri = delaunay(With_cavity_results_array(:,1), With_cavity_results_array(:,2));
+    figure()
+    axis tight
+    trisurf(tri, With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3))
+    title('Difference between the signals of models with and without a cavity, Sizing 1','interpreter','latex')
+    xlabel('x-coordinate [m]','interpreter','latex')
+    ylabel('y-coordinate [m]','interpreter','latex')
+    zlabel('Gravity Difference [mGal]','interpreter','latex')
+    c = colorbar;
+    c.Label.String = 'Gravity Difference [mGal]';
+    c.Label.Interpreter = 'latex';
+    c.Label.FontSize = 11;
+    
+    labels = {'x-coordinate [m]','y-coordinate [m]','Gravity Difference [mGal]','Difference between the signals of models with and without a cavity, Sizing 1' };
     ContourPlot(4,With_cavity_results_array(:,1),With_cavity_results_array(:,2),No_cavity_results_array(:,3)-With_cavity_results_array(:,3),labels)
 end
 
