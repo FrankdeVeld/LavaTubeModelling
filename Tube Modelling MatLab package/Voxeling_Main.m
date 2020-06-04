@@ -34,14 +34,14 @@ close all
 % Cavity_coordinates = importdata('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\MatLab Model Maker\Cavity_Test_Data_Coords_4.csv'); % Change the directory accordingly
 [A,~] = stlread('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\galapagos-lava-tube\source\Mesh SCruz2 levigata\Mesh SCruz2 levigata.stl');
 Cavity_coordinates = A.Points;
-Reduce_factor = 10;
+Reduce_factor = 5;
 
 % What this does; make the cavity Sizing_Factor times larger, or stretch it
 % by a factor Stretching_Factor_H horizontally.
-% Vertical stretching is a bit trickier an di will think about this
+% Vertical stretching is a bit trickier, or shape-preserving stretching
 % Alternative; stretch it until the average radius/length is .../... meter
 Sizing_Factor = 1;
-Stretching_Factor_H = 3;
+Stretching_Factor_H = 1;
 
 Cavity_coordinates = Sizing_Factor*Reduce_coordinates(Cavity_coordinates, Reduce_factor);
 Cavity_coordinates(:,1) = Stretching_Factor_H*Cavity_coordinates(:,1);
@@ -52,17 +52,19 @@ Cavity_coordinates(:,2) = Stretching_Factor_H*Cavity_coordinates(:,2);
 
 Rock_density = 2.5; % density in g/cm³
 Cavity_depth = 10; % How many meters under the surface the cave is located
-Sizing_factor = 1.5; % To deal with edge effects
+
 Station_resolution = 50; % Square root how number of stations wanted
 Voxel_resolution = 250; % Number of voxels per direction. Note: in total 30.000.000 voxels are allowed.
 
-Model_name = ['sizing_Test_sh3']; % The name you want your model to have
+Sizing_factor = 1.5; % To deal with edge effects
+
+Model_name = ['throwaway']; % The name you want your model to have
 
 Cavity_limit_vector = [];
 for a=1:3
     Cavity_limit_vector = [Cavity_limit_vector,min(Cavity_coordinates(:,a)),max(Cavity_coordinates(:,a))];
 end
-% Interpretation: the total model has the size of the cavity, times 2*Sizing_factor.
+% Interpretation: the total model has the size of the cavity plus 2*Sizing_factor.
 % This can be tweaked!
 Cavity_length_x = Cavity_limit_vector(2)-Cavity_limit_vector(1);
 Cavity_length_y = Cavity_limit_vector(4)-Cavity_limit_vector(3);
@@ -78,24 +80,24 @@ Cavity_coordinates(:,3) = Cavity_coordinates(:,3) - Limit_vector(6);
 Limit_vector(5)  = Limit_vector(5) - Limit_vector(6);
 Limit_vector(6)  = Limit_vector(6) - Limit_vector(6);
 
-res_x = (Limit_vector(2)-Limit_vector(1))/Voxel_resolution;
-res_y = (Limit_vector(4)-Limit_vector(3))/Voxel_resolution;
-res_z = (Limit_vector(6)-Limit_vector(5))/Voxel_resolution;
-Grid_size = round(max([res_x,res_y,res_z]));
+Meter_per_voxel_x = (Limit_vector(2)-Limit_vector(1))/Voxel_resolution;
+Meter_per_voxel_y = (Limit_vector(4)-Limit_vector(3))/Voxel_resolution;
+Meter_per_voxel_z = (Limit_vector(6)-Limit_vector(5))/Voxel_resolution;
+Grid_spacing = round(max([Meter_per_voxel_x,Meter_per_voxel_y,Meter_per_voxel_z]));
 
-Limit_vector(1) = Limit_vector(1) + mod((Limit_vector(2)-Limit_vector(1)),Grid_size);
-Limit_vector(3) = Limit_vector(3) + mod((Limit_vector(4)-Limit_vector(3)),Grid_size);
-Limit_vector(5) = Limit_vector(5) + mod((Limit_vector(6)-Limit_vector(5)),Grid_size);
+Limit_vector(1) = Limit_vector(1) + mod((Limit_vector(2)-Limit_vector(1)),Grid_spacing);
+Limit_vector(3) = Limit_vector(3) + mod((Limit_vector(4)-Limit_vector(3)),Grid_spacing);
+Limit_vector(5) = Limit_vector(5) + mod((Limit_vector(6)-Limit_vector(5)),Grid_spacing);
 
 % Now, everything fits into the grid
 
-res_x = (Limit_vector(2)-Limit_vector(1))/Grid_size;
-res_y = (Limit_vector(4)-Limit_vector(3))/Grid_size;
-res_z = (Limit_vector(6)-Limit_vector(5))/Grid_size;
+Voxels_in_direction_x = (Limit_vector(2)-Limit_vector(1))/Grid_spacing;
+Voxels_in_direction_y = (Limit_vector(4)-Limit_vector(3))/Grid_spacing;
+Voxels_in_direction_z = (Limit_vector(6)-Limit_vector(5))/Grid_spacing;
 
-Grid = [res_x,res_y,res_z];
+Number_voxels_per_direction = [Voxels_in_direction_x,Voxels_in_direction_y,Voxels_in_direction_z];
 
-Write_basic_model_file(Rock_density, Model_name, Limit_vector, res_y-2);
+Write_basic_model_file(Rock_density, Model_name, Limit_vector, Voxels_in_direction_y-1); % -1, as the number of intermediate sections is required as input
 % Note: this model has almost nothing; the proper cavity will be defined
 % later with voxels
 
@@ -104,18 +106,18 @@ Write_basic_model_file(Rock_density, Model_name, Limit_vector, res_y-2);
 % With cavity
 File_name = ['Vox_With_Cavity_',Model_name,'.vxo'];
 Cavity_bool = true;
-Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_vector,Cavity_bool,File_name,Grid_size,Grid)
+Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_vector,Cavity_bool,File_name,Grid_spacing,Number_voxels_per_direction)
 
 % Without cavity
 File_name = ['Vox_No_Cavity_',Model_name,'.vxo'];
 Cavity_bool = false;
-Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_vector,Cavity_bool,File_name,Grid_size,Grid)
+Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_vector,Cavity_bool,File_name,Grid_spacing,Number_voxels_per_direction)
 
 %% Step 3: Define the stations
 
 Export_stations_file(Limit_vector,Station_resolution,Model_name) % ASSUMING flat land, also currently only a set grid is created without other patterns
 
-%% Step 4: Import the model file, the voxel files ánd the station file in IGMAS, do the anomaly calculation and export the .stations files
+%% Step 4: Import the model file, the voxel files and the station file in IGMAS, do the anomaly calculation and export the .stations files
 
 %% Step 5: Compare the calculated anomalies
 
