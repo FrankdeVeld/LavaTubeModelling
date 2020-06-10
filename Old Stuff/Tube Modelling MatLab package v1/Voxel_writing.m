@@ -1,25 +1,51 @@
 %% Function to write .vxo-files
 % Densities are filled in according to the known cavity location
-function  Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_vector,Cavity_bool,File_name,Grid_spacing,Number_voxels_per_direction)
+function [Vox_limits] =  Voxel_writing(Rock_density,Cavity_coordinates,Cavity_limit_vector,Cavity_bool,File_name,Grid_spacing,Number_voxels_per_direction,Vox_limits,Sizing_factor,Model_name)
     Voxel = []; % Initialize the full data file
-    xlength = Voxel_resolution; % Voxel_resolution: number of voxels per direction
-    ylength = Voxel_resolution; 
-    zlength = Voxel_resolution; 
+   
     
-    xrange = Limit_vector(2) - Limit_vector(1);
-    yrange = Limit_vector(4) - Limit_vector(3);
-    zrange = Limit_vector(6) - Limit_vector(5);
 
-    Starting_grid = Make_rocky_grid(Limit_vector+Grid_spacing/2,Rock_density,Grid_spacing,Number_voxels_per_direction);
+    Starting_grid = Make_rocky_grid(Cavity_limit_vector,Rock_density,Grid_spacing,Number_voxels_per_direction);
     
     if Cavity_bool == true
        
         Gridded_cavity_coordinates = Grid_cavity_coordinates(Cavity_coordinates,Grid_spacing,Starting_grid);
+    
+        Gridded_cavity_limit_vector = [];
+        for a=1:3
+            Gridded_cavity_limit_vector = [Gridded_cavity_limit_vector,round(min(Gridded_cavity_coordinates(:,a))),round(max(Gridded_cavity_coordinates(:,a)))];
+        end
+        
         Unique_gridded_cavity_coordinates = unique(Gridded_cavity_coordinates, 'rows');
 
         [~,idx] = sort(Unique_gridded_cavity_coordinates(:,2)); % sort just the first column
         Sorted_unique_gridded_cavity_coordinates = Unique_gridded_cavity_coordinates(idx,:);   % sort the whole matrix using the sort indices
+        
+        
+        
+        xrange = Gridded_cavity_limit_vector(2) - Gridded_cavity_limit_vector(1);
+        yrange = Gridded_cavity_limit_vector(4) - Gridded_cavity_limit_vector(3);
+        zrange = Gridded_cavity_limit_vector(6) - Gridded_cavity_limit_vector(5);
 
+        Gridded_cavity_range_vector = [xrange,yrange,zrange];
+
+        Vox_min_x = min(Gridded_cavity_coordinates(:,1)) - Gridded_cavity_range_vector(1)*Sizing_factor;
+        Vox_max_x = max(Gridded_cavity_coordinates(:,1)) + Gridded_cavity_range_vector(1)*Sizing_factor;
+        Vox_min_y = min(Gridded_cavity_coordinates(:,2)) - Gridded_cavity_range_vector(2)*Sizing_factor;
+        Vox_max_y = max(Gridded_cavity_coordinates(:,2)) + Gridded_cavity_range_vector(2)*Sizing_factor;
+        Vox_min_z = min(Gridded_cavity_coordinates(:,3)) - Gridded_cavity_range_vector(3)*Sizing_factor;
+        Vox_max_z = 0;
+        
+        Vox_min_x = Vox_min_x + mod((Vox_max_x-Vox_min_x),Grid_spacing);
+        Vox_min_y = Vox_min_y + mod((Vox_max_y-Vox_min_y),Grid_spacing);
+        Vox_min_z = Vox_min_z + mod((Vox_max_z-Vox_min_z),Grid_spacing);
+
+        Vox_limits = [Vox_min_x,Vox_max_x,Vox_min_y,Vox_max_y,Vox_min_z,Vox_max_z];
+        
+        % Note: this model has almost nothing; the proper cavity will be defined
+        % later with voxels
+        Write_basic_model_file(Rock_density, Model_name, Vox_limits, Cavity_limit_vector, Number_voxels_per_direction(2)-1); % -1, as the number of intermediate sections is required as input
+        
         % Due to technical issues, we rather don't have zeros in the
         % matrix. If this is really a problem, a method can be implemented
         % that temporarily changes the zero coordinates to another value.
@@ -93,7 +119,8 @@ function  Voxel_writing(Voxel_resolution,Rock_density,Cavity_coordinates,Limit_v
         end
     end
     Voxel = Starting_grid;
-
+    
+    Voxel = Add_corner_voxels(Voxel, Rock_density, Grid_spacing, Vox_limits);
 
     % Writing it to a .vxo file
     fileID = fopen(File_name,'w');
@@ -183,5 +210,26 @@ function Starting_grid = Make_rocky_grid(Limit_vector,Rock_density,Grid_size,Gri
                 Element_index = Element_index + 1;
             end
         end
+    end
+end
+
+function [Voxel,Vox_limits] = Add_corner_voxels(Voxel, Rock_density, Grid_spacing, Vox_limits)
+    Base_length = length(Voxel(:,1));
+    
+    
+    for a=1:8
+        if mod(a,2) == 1
+            Voxel(Base_length+a,1) = Vox_limits(2)-Grid_spacing/2;
+            Voxel(Base_length+a,2) = Vox_limits(3)+Grid_spacing/2;
+        else
+            Voxel(Base_length+a,1) = Vox_limits(1)+Grid_spacing/2;
+            Voxel(Base_length+a,2) = Vox_limits(4)-Grid_spacing/2;
+        end
+        if a<5
+            Voxel(Base_length+a,3) = Vox_limits(5)+Grid_spacing/2;
+        else
+            Voxel(Base_length+a,3) = Vox_limits(6)-Grid_spacing/2;
+        end
+        Voxel(Base_length+a,4) = Rock_density;
     end
 end
