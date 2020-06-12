@@ -5,7 +5,7 @@
 % patterns)
 function Export_stations_file(Station_limit_vector,Station_resolution, Model_name)
     feature('DefaultCharacterSet', 'UTF8'); 
-    File_name = ['Stations_',Model_name,'.stations'];
+    File_name = [Model_name,'_Stations.stations'];
     fid = fopen(File_name,'w');
     fprintf(fid, '<?xml version="1.0" encoding="UTF-8"?>\n'); % Result in proper encoding
     Temp_text = ['<geodata> \n' ...

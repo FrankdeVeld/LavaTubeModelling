@@ -1,9 +1,9 @@
 %% Function for writing a .model file, needed foor IGMAS modelling
 % Function to write a basic .model file, according to the previously
 % defined model limits
-function Write_basic_model_file(Rock_density, Model_name, Model_limits, Cavity_limits, Num_intermediate_sections) 
+function Write_basic_model_file(Rock_density, Cavity_density, Model_name, Model_limits, Cavity_limits, Num_intermediate_sections) 
     feature('DefaultCharacterSet', 'UTF8'); % Needed mostly to make the ³-character work
-    File_name = ['Basic_model_',Model_name,'.model'];
+    File_name = [Model_name,'_Basic_model.model'];
     fid = fopen(File_name,'w');
     fprintf(fid, '<?xml version="1.0" encoding="UTF-8"?>\n'); % Result in proper encoding
     fprintf(fid, '<geodata name="Test Model">\n'); % Open the geodata class
@@ -16,9 +16,10 @@ function Write_basic_model_file(Rock_density, Model_name, Model_limits, Cavity_l
     String_rock = sprintf(String_rock,Rock_density);
     fprintf(fid, String_rock);
 
-    % Define the cavity body. Density should be 0.
-    String_rock = ['<property name="body" value="cavity"> \n    <property name="density" units="g/cm³" value="0"></property> \n <color red="0" green="1" blue="0"></color> \n</property> \n'];
-    fprintf(fid, String_rock);
+    % Define the cavity body. Density should be 0, but can be changed
+    String_cavity = ['<property name="body" value="cavity"> \n    <property name="density" units="g/cm³" value="%4.2f"></property> \n <color red="0" green="1" blue="0"></color> \n</property> \n'];
+    String_cavity = sprintf(String_cavity,Cavity_density);
+    fprintf(fid, String_cavity);
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
