@@ -9,8 +9,8 @@
 %           efficiency. Change to 'inShape' function for checking whather points
 %           are in a cavity. Script has been made clearer and smaller
 % v 2.1:    June 11th, 2020. Made cavity density variable, added a way of
-%           visualisation. Added importing of basic shapes. Todo: add error
-%           messages, make importing more variable
+%           visualisation. Added importing of basic shapes. Made file importing more variable 
+%           Sdded error messages 
 
 % Aim of this script: Go from a coordinate-based file to an IGMAS modelling
 % file
@@ -32,7 +32,6 @@
 % - Rock density: what the density of the surrounding rock is (Step 1)
 % - Cavity density: density of interior of cavity (so, probably 0) (Step 1)
 % 
-% - Name of the model (Step 1)
 % - Edge factor: how much extra space you want in the x- and y-directions
 % to prevent boundary effects (Step 1)
 
@@ -40,16 +39,21 @@
 
 clear all
 close all
+
+File_directory = 'C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\galapagos-lava-tube\source\Mesh SCruz2 levigata\Mesh SCruz2 levigata.stl';
+Model_name = 'Cylinder_V_gs5_verification_test';
 %% Step 0: Import the coordinates and reduce the resolution
 
 % The file either is an csv-file (use importdata) or a .stl file (use stlread)
 
 % 'Cave_info' consists of faces and vertices
 % 'stlread' is a function from the MatLab file exchange, see https://nl.mathworks.com/matlabcentral/fileexchange/22409-stl-file-reader
-Cave_info = stlread('C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\galapagos-lava-tube\source\Mesh SCruz2 levigata\Mesh SCruz2 levigata.stl');
+Cave_info = stlread(File_directory);
 Cavity_coordinates = Cave_info.vertices;
 
-% Other option: make a standard shape. Options: 'Cylinder', 'Sphere' and
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other option: make a standard shape. Options: 'Cylinder_H', 'Cylinder_V', 'Sphere' and
 % 'Beam'
 % % 
 % Cylinder_length = 100; % Horizontal length in meter
@@ -68,12 +72,20 @@ Cavity_coordinates = Import_shape('Cylinder_V', 0, 0, Cylinder_height, Cylinder_
 % Beam_heigth = 10;
 % Cavity_coordinates = Import_shape('Beam', Beam_length, Beam_width, Beam_heigth, 0);
 
+if (Cylinder_height <= 0 || Cylinder_radius <= 0 || Sphere_radius <= 0 || Beam_length <= 0 || Beam_width <= 0 || Beam_height <= 0)
+   error('Error: dimensions must be positive') 
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % If the number of points is much more than you need, you can reduce the
 % number with this parameter:
 Reduce_factor = 1;
 
 % It takes some time and right now we don't use it, so it is commented out
 % Cavity_coordinates = Reduce_coordinates(Cavity_coordinates, Reduce_factor);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % What this does; make the cavity Sizing_factor times larger, or stretch it
 % by a factor Stretching_factor_h horizontally.
@@ -94,11 +106,25 @@ Grid_spacing = 5;
 Grid_spacing = Grid_spacing*Sizing_factor;
 Rock_density = 0; % density in g/cm³
 Cavity_density = 2.5; % density in g/cm³
-Model_name = ['Cylinder_V_gs5_verification_test']; % The name you want your model to have
+Model_name = [Model_name]; % The name you want your model to have
 Edging_factor = 0.50; % How much additional rock you want around the cavity, in order to prevent edge effects to play a dominant role. 
 % This can be set 0 without too many problems, but from about 0.25 on you
 % probably won't see the edge effects anymore
 Cavity_depth = 10; % How much space filled with rock there is between the top of the cavity and the stations (on the ground)
+
+if Grid_spacing <=0
+    error('Error: grid spacing must be positive')
+end
+if ( (max(Cavity_coordinates(:,1))-min(Cavity_coordinates(:,1)))/Grid_spacing * (max(Cavity_coordinates(:,2))-min(Cavity_coordinates(:,2)))/Grid_spacing * (max(Cavity_coordinates(:,3))-min(Cavity_coordinates(:,3)))/Grid_spacing > 10000000) 
+    warning('Warning: many voxels present (> 10 000 000), modelling process can take a while')
+elseif  ( (max(Cavity_coordinates(:,1))-min(Cavity_coordinates(:,1)))/Grid_spacing * (max(Cavity_coordinates(:,2))-min(Cavity_coordinates(:,2)))/Grid_spacing * (max(Cavity_coordinates(:,3))-min(Cavity_coordinates(:,3)))/Grid_spacing > 30000000) 
+    error('Error: too many voxels present (> 30 000 000). Reduce by adjusting the grid spacing')
+end
+
+if( (max(Cavity_coordinates(:,1))-min(Cavity_coordinates(:,1)))/Grid_spacing < 1 || (max(Cavity_coordinates(:,2))-min(Cavity_coordinates(:,2)))/Grid_spacing < 1 || (max(Cavity_coordinates(:,3))-min(Cavity_coordinates(:,3)))/Grid_spacing < 1)
+    error('Error: grid spacing too high; zero voxels detected in one of the directions')
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Gridded_coords = {};
 Sizing_addition = [];
@@ -132,6 +158,8 @@ Cavity_limits(6) = Cavity_limits(6) - Model_limits(6);
 Model_limits(5) = Model_limits(5) - Model_limits(6);
 Model_limits(6) = Model_limits(6) - Model_limits(6);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % This is still to create a grid, but in the format of an n x n x n
 % meshgrid. This makes it easier to create 'logicals', which speed uo the
 % process later on
@@ -152,16 +180,15 @@ Grid_matrix_3n = [X(Logical),Y(Logical),Z(Logical)];
 % found in the same file set
 % With cavity
 Visualisation_bool = true; % Also export a file with 'just the cavity'
-File_name = [Model_name,'_With_Cavity.vxo']; % The model name defined earlier is added
+File_directory = [Model_name,'_With_Cavity.vxo']; % The model name defined earlier is added
 Cavity_bool = true; % This is to use the following function twice, instead of making separate functions for it
-Voxel_Creation(Rock_density,Cavity_density,Cavity_coordinates,Grid_matrix_3n,Cavity_bool,Model_limits,Grid_spacing,File_name,Visualisation_bool)
+Voxel_Creation(Rock_density,Cavity_density,Cavity_coordinates,Grid_matrix_3n,Cavity_bool,Model_limits,Grid_spacing,File_directory,Visualisation_bool)
 
 % Without cavity
 Visualisation_bool = false;
-File_name = [Model_name,'_No_Cavity.vxo'];
+File_directory = [Model_name,'_No_Cavity.vxo'];
 Cavity_bool = false;
-Voxel_Creation(Rock_density,Cavity_density,Cavity_coordinates,Grid_matrix_3n,Cavity_bool,Model_limits,Grid_spacing,File_name,Visualisation_bool)
-
+Voxel_Creation(Rock_density,Cavity_density,Cavity_coordinates,Grid_matrix_3n,Cavity_bool,Model_limits,Grid_spacing,File_directory,Visualisation_bool)
 
 % Export model file
 Write_basic_model_file(Rock_density, Cavity_density, Model_name, Model_limits, Cavity_limits, length(Gridded_coords{1,2})-1) 
@@ -173,7 +200,7 @@ Export_stations_file(Model_limits,Station_resolution,Model_name) % ASSUMING flat
 %% Step 4: Import the model file, the voxel files and the station file in IGMAS, do the anomaly calculation and export the .stations files
 
 % In order to make Step 5 work well, only calculate 'gz' and not the other
-% signals. This is the interesting signal
+% signals. This is the interesting signal in the first place
 
 %% Step 5: Compare the calculated anomalies
 

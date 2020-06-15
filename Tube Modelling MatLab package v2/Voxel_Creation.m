@@ -6,7 +6,7 @@ function Voxel_Creation(Rock_density,Cavity_density,Cavity_coordinates,Grid_matr
         % here. If needed, they can be easily visualised with
         % 'plot(Cavity_Alphashape)'
         Cavity_Alphashape = alphaShape(Cavity_coordinates);
-         Cavity_Alphashape.Alpha = Cavity_Alphashape.Alpha*2; % Some security which might has to be improved later on
+        Cavity_Alphashape.Alpha = Cavity_Alphashape.Alpha*2; % Some security which might has to be improved later on
         % The reason for the use of alphashapes (earlier we already had the
         % full model) is the built-in efficient way of checking whether
         % points are in the interior. This is done for all points together
@@ -44,6 +44,9 @@ function Voxel_Creation(Rock_density,Cavity_density,Cavity_coordinates,Grid_matr
     % points with their respective densities.
     Export = [Inside_points;Outside_points];
     
+    if(Cavity_bool == true && length(Inside_points(:,1)) < 1)
+        error('Error: no inside points detected. Decrease grid spacing, or increase alpha of alphaShape')
+    end
     % This sorting is to have both files sorted the same way. It is useful
     % for checking, but should not affect performance
     [~,idx] = sort(Export(:,3)); % sort just the first column
