@@ -4,7 +4,7 @@
 % Output:  one to three .mat files with results and station coordinates
 
 % Run when you have results of all files (of a certain lava tube model), as
-% this script will make results in a loop. Takea about 4 seconds per
+% this script will make results in a loop. Takes about 4 seconds per
 % configuration, so certainly when you have about 100 configurations per
 % lava tube model you can take a quick break here
 
@@ -29,8 +29,6 @@ for a=1:5 % Grid Spacing
         end
     end
 end
-
-Results_writer('LAGOS',5,3,5,50)
 
 function Results_writer(Model_name,GS,MD,CD,Station_resolution)
     % For 'xml2struct', see https://nl.mathworks.com/matlabcentral/fileexchange/28518-xml2struct

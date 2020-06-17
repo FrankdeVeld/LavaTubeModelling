@@ -10,7 +10,7 @@
 % script
 function Write_basic_model_file(Model_density, Model_name, Model_limits, Cavity_limits, Num_intermediate_sections) 
     feature('DefaultCharacterSet', 'UTF8'); % Needed mostly to make the ³-character work
-    File_name = [Model_name,'_Basic_model.model'];
+    File_name = [Model_name,'.model'];
     fid = fopen(File_name,'w');
     fprintf(fid, '<?xml version="1.0" encoding="UTF-8"?>\n'); % Result in proper encoding
     fprintf(fid, '<geodata name="Test Model">\n'); % Open the geodata class

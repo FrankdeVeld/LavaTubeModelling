@@ -25,20 +25,6 @@
 
 % Running the script should take about 0-20 seconds (estimated)
 
-% What can be changed?
-% - Reducing factor: how many data points do you find acceptable (Step 0)
-% - Sizing factor: how much larger you want your model to be, compared
-% to its original size (Step 0)
-% - Horizontal stretching factor: how much do you want your cavity to be
-% stretched horizontally (Step 0)
-
-% - Cavity depth: The distance between cavity and stations (Step 1)
-% - Rock density: what the density of the surrounding rock is (Step 1)
-% - Cavity density: density of interior of cavity (so, probably 0) (Step 1)
-% 
-% - Edge factor: how much extra space you want in the x- and y-directions
-% to prevent boundary effects (Step 1)
-
 % - Station resolution: how many stations do you want on the grid (Step 3)
 
 clear all
@@ -46,14 +32,16 @@ close all
 
 % These are the parameters that need to be changed constantly for making
 % the database
+Lava_tube_model_array = ['LAGOS','GALA','JAMEO','ETNA'];
 Grid_spacing_array = [0.5, 1, 2.5, 5, 10];
 Model_density_array = [1.5, 2, 2.5, 3, 3.5];
 Cavity_depth_array = [1, 5, 10, 25, 50];
+Station_resolution = 50; % Advised is to have the number of stations per m² be comparable to the number of voxels per m³, or at least in the same order of magnitude
 
-Lava_tube = 'LAGOS';
-Grid_spacing = 5;
-Model_density = 3.0;
-Cavity_depth = 5;
+Lava_tube = Lava_tube_model_array(1);
+Grid_spacing = Grid_spacing_array(4);
+Model_density = Model_density_array(4);
+Cavity_depth = Cavity_depth_array(2);
 
 if (strcmp(Lava_tube,'LAGOS')==true)
     File_directory = 'C:\Users\frank\Dropbox\Studie\Stage\Documenten Lava Tubes\IGMAS\Lava tube models\cueva-de-los-siete-lagos\source\agua_text\Los lagos ok.stl';
@@ -213,7 +201,6 @@ Voxel_creation(Model_density,Cavity_coordinates,Grid_matrix_3n,File_directory)
 % Export model file
 Write_basic_model_file(Model_density, Model_name, Model_limits, Cavity_limits, length(Gridded_coords{1,2})-1) 
 %% Step 3: Define the stations
-Station_resolution = 50; % Advised is to have the number of stations per m² be comparable to the number of voxels per m³, or at least in the same order of magnitude
 
 Export_stations_file(Model_limits,Station_resolution,Model_name) % ASSUMING flat land, also currently only a set grid is created without other patterns
 
