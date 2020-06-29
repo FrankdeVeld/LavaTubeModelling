@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<geodata name="Test Model">
+<property name="body" value="reference"> 
+    <property name="density" units="g/cm³" value="0.0"></property> 
+ <color red="0.5019608" green="0.5019608" blue="0.5019608"></color> 
+</property> 
+<property name="body" value="Inverted Cavity"> 
+    <property name="density" units="g/cm³" value="3.00"></property> 
+ <color red="0.6601" green="0.6601" blue="0.6601"></color> 
+</property> 
+<geometry><cross_section name="0" x_start="-627.50" y_start="-518.50" x_end="1640.50" y_end="-518.50"></cross_section> 
+<vertex id="0" x="2268.00" z="-304.00"></vertex> 
+<vertex id="1" x="0.00" z="-304.00"></vertex> 
+<vertex id="2" x="0.00" z="0.00"></vertex> 
+<vertex id="3" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="0 1 2 3 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="1" x_start="-627.50" y_start="-43.36" x_end="1640.50" y_end="-43.36"></cross_section> 
+<vertex id="4" x="2268.00" z="-304.00"></vertex> 
+<vertex id="5" x="0.00" z="-304.00"></vertex> 
+<vertex id="6" x="0.00" z="0.00"></vertex> 
+<vertex id="7" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="4 5 6 7 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="2" x_start="-627.50" y_start="-30.72" x_end="1640.50" y_end="-30.72"></cross_section> 
+<vertex id="8" x="2268.00" z="-304.00"></vertex> 
+<vertex id="9" x="0.00" z="-304.00"></vertex> 
+<vertex id="10" x="0.00" z="0.00"></vertex> 
+<vertex id="11" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="8 9 10 11 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="3" x_start="-627.50" y_start="-18.08" x_end="1640.50" y_end="-18.08"></cross_section> 
+<vertex id="12" x="2268.00" z="-304.00"></vertex> 
+<vertex id="13" x="0.00" z="-304.00"></vertex> 
+<vertex id="14" x="0.00" z="0.00"></vertex> 
+<vertex id="15" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="12 13 14 15 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="4" x_start="-627.50" y_start="-5.44" x_end="1640.50" y_end="-5.44"></cross_section> 
+<vertex id="16" x="2268.00" z="-304.00"></vertex> 
+<vertex id="17" x="0.00" z="-304.00"></vertex> 
+<vertex id="18" x="0.00" z="0.00"></vertex> 
+<vertex id="19" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="16 17 18 19 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="5" x_start="-627.50" y_start="7.20" x_end="1640.50" y_end="7.20"></cross_section> 
+<vertex id="20" x="2268.00" z="-304.00"></vertex> 
+<vertex id="21" x="0.00" z="-304.00"></vertex> 
+<vertex id="22" x="0.00" z="0.00"></vertex> 
+<vertex id="23" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="20 21 22 23 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="6" x_start="-627.50" y_start="19.84" x_end="1640.50" y_end="19.84"></cross_section> 
+<vertex id="24" x="2268.00" z="-304.00"></vertex> 
+<vertex id="25" x="0.00" z="-304.00"></vertex> 
+<vertex id="26" x="0.00" z="0.00"></vertex> 
+<vertex id="27" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="24 25 26 27 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="7" x_start="-627.50" y_start="32.48" x_end="1640.50" y_end="32.48"></cross_section> 
+<vertex id="28" x="2268.00" z="-304.00"></vertex> 
+<vertex id="29" x="0.00" z="-304.00"></vertex> 
+<vertex id="30" x="0.00" z="0.00"></vertex> 
+<vertex id="31" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="28 29 30 31 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="8" x_start="-627.50" y_start="45.12" x_end="1640.50" y_end="45.12"></cross_section> 
+<vertex id="32" x="2268.00" z="-304.00"></vertex> 
+<vertex id="33" x="0.00" z="-304.00"></vertex> 
+<vertex id="34" x="0.00" z="0.00"></vertex> 
+<vertex id="35" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="32 33 34 35 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="9" x_start="-627.50" y_start="57.76" x_end="1640.50" y_end="57.76"></cross_section> 
+<vertex id="36" x="2268.00" z="-304.00"></vertex> 
+<vertex id="37" x="0.00" z="-304.00"></vertex> 
+<vertex id="38" x="0.00" z="0.00"></vertex> 
+<vertex id="39" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="36 37 38 39 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="10" x_start="-627.50" y_start="70.40" x_end="1640.50" y_end="70.40"></cross_section> 
+<vertex id="40" x="2268.00" z="-304.00"></vertex> 
+<vertex id="41" x="0.00" z="-304.00"></vertex> 
+<vertex id="42" x="0.00" z="0.00"></vertex> 
+<vertex id="43" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="40 41 42 43 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="11" x_start="-627.50" y_start="83.04" x_end="1640.50" y_end="83.04"></cross_section> 
+<vertex id="44" x="2268.00" z="-304.00"></vertex> 
+<vertex id="45" x="0.00" z="-304.00"></vertex> 
+<vertex id="46" x="0.00" z="0.00"></vertex> 
+<vertex id="47" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="44 45 46 47 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="12" x_start="-627.50" y_start="95.68" x_end="1640.50" y_end="95.68"></cross_section> 
+<vertex id="48" x="2268.00" z="-304.00"></vertex> 
+<vertex id="49" x="0.00" z="-304.00"></vertex> 
+<vertex id="50" x="0.00" z="0.00"></vertex> 
+<vertex id="51" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="48 49 50 51 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="13" x_start="-627.50" y_start="108.32" x_end="1640.50" y_end="108.32"></cross_section> 
+<vertex id="52" x="2268.00" z="-304.00"></vertex> 
+<vertex id="53" x="0.00" z="-304.00"></vertex> 
+<vertex id="54" x="0.00" z="0.00"></vertex> 
+<vertex id="55" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="52 53 54 55 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="14" x_start="-627.50" y_start="120.96" x_end="1640.50" y_end="120.96"></cross_section> 
+<vertex id="56" x="2268.00" z="-304.00"></vertex> 
+<vertex id="57" x="0.00" z="-304.00"></vertex> 
+<vertex id="58" x="0.00" z="0.00"></vertex> 
+<vertex id="59" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="56 57 58 59 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="15" x_start="-627.50" y_start="133.60" x_end="1640.50" y_end="133.60"></cross_section> 
+<vertex id="60" x="2268.00" z="-304.00"></vertex> 
+<vertex id="61" x="0.00" z="-304.00"></vertex> 
+<vertex id="62" x="0.00" z="0.00"></vertex> 
+<vertex id="63" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="60 61 62 63 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="16" x_start="-627.50" y_start="146.24" x_end="1640.50" y_end="146.24"></cross_section> 
+<vertex id="64" x="2268.00" z="-304.00"></vertex> 
+<vertex id="65" x="0.00" z="-304.00"></vertex> 
+<vertex id="66" x="0.00" z="0.00"></vertex> 
+<vertex id="67" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="64 65 66 67 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="17" x_start="-627.50" y_start="158.88" x_end="1640.50" y_end="158.88"></cross_section> 
+<vertex id="68" x="2268.00" z="-304.00"></vertex> 
+<vertex id="69" x="0.00" z="-304.00"></vertex> 
+<vertex id="70" x="0.00" z="0.00"></vertex> 
+<vertex id="71" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="68 69 70 71 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="18" x_start="-627.50" y_start="171.52" x_end="1640.50" y_end="171.52"></cross_section> 
+<vertex id="72" x="2268.00" z="-304.00"></vertex> 
+<vertex id="73" x="0.00" z="-304.00"></vertex> 
+<vertex id="74" x="0.00" z="0.00"></vertex> 
+<vertex id="75" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="72 73 74 75 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="19" x_start="-627.50" y_start="184.16" x_end="1640.50" y_end="184.16"></cross_section> 
+<vertex id="76" x="2268.00" z="-304.00"></vertex> 
+<vertex id="77" x="0.00" z="-304.00"></vertex> 
+<vertex id="78" x="0.00" z="0.00"></vertex> 
+<vertex id="79" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="76 77 78 79 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="20" x_start="-627.50" y_start="196.80" x_end="1640.50" y_end="196.80"></cross_section> 
+<vertex id="80" x="2268.00" z="-304.00"></vertex> 
+<vertex id="81" x="0.00" z="-304.00"></vertex> 
+<vertex id="82" x="0.00" z="0.00"></vertex> 
+<vertex id="83" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="80 81 82 83 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="21" x_start="-627.50" y_start="209.44" x_end="1640.50" y_end="209.44"></cross_section> 
+<vertex id="84" x="2268.00" z="-304.00"></vertex> 
+<vertex id="85" x="0.00" z="-304.00"></vertex> 
+<vertex id="86" x="0.00" z="0.00"></vertex> 
+<vertex id="87" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="84 85 86 87 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="22" x_start="-627.50" y_start="222.08" x_end="1640.50" y_end="222.08"></cross_section> 
+<vertex id="88" x="2268.00" z="-304.00"></vertex> 
+<vertex id="89" x="0.00" z="-304.00"></vertex> 
+<vertex id="90" x="0.00" z="0.00"></vertex> 
+<vertex id="91" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="88 89 90 91 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="23" x_start="-627.50" y_start="234.72" x_end="1640.50" y_end="234.72"></cross_section> 
+<vertex id="92" x="2268.00" z="-304.00"></vertex> 
+<vertex id="93" x="0.00" z="-304.00"></vertex> 
+<vertex id="94" x="0.00" z="0.00"></vertex> 
+<vertex id="95" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="92 93 94 95 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="24" x_start="-627.50" y_start="247.36" x_end="1640.50" y_end="247.36"></cross_section> 
+<vertex id="96" x="2268.00" z="-304.00"></vertex> 
+<vertex id="97" x="0.00" z="-304.00"></vertex> 
+<vertex id="98" x="0.00" z="0.00"></vertex> 
+<vertex id="99" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="96 97 98 99 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="25" x_start="-627.50" y_start="260.00" x_end="1640.50" y_end="260.00"></cross_section> 
+<vertex id="100" x="2268.00" z="-304.00"></vertex> 
+<vertex id="101" x="0.00" z="-304.00"></vertex> 
+<vertex id="102" x="0.00" z="0.00"></vertex> 
+<vertex id="103" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="100 101 102 103 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="26" x_start="-627.50" y_start="272.64" x_end="1640.50" y_end="272.64"></cross_section> 
+<vertex id="104" x="2268.00" z="-304.00"></vertex> 
+<vertex id="105" x="0.00" z="-304.00"></vertex> 
+<vertex id="106" x="0.00" z="0.00"></vertex> 
+<vertex id="107" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="104 105 106 107 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="27" x_start="-627.50" y_start="285.28" x_end="1640.50" y_end="285.28"></cross_section> 
+<vertex id="108" x="2268.00" z="-304.00"></vertex> 
+<vertex id="109" x="0.00" z="-304.00"></vertex> 
+<vertex id="110" x="0.00" z="0.00"></vertex> 
+<vertex id="111" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="108 109 110 111 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="28" x_start="-627.50" y_start="297.92" x_end="1640.50" y_end="297.92"></cross_section> 
+<vertex id="112" x="2268.00" z="-304.00"></vertex> 
+<vertex id="113" x="0.00" z="-304.00"></vertex> 
+<vertex id="114" x="0.00" z="0.00"></vertex> 
+<vertex id="115" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="112 113 114 115 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="29" x_start="-627.50" y_start="310.56" x_end="1640.50" y_end="310.56"></cross_section> 
+<vertex id="116" x="2268.00" z="-304.00"></vertex> 
+<vertex id="117" x="0.00" z="-304.00"></vertex> 
+<vertex id="118" x="0.00" z="0.00"></vertex> 
+<vertex id="119" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="116 117 118 119 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="30" x_start="-627.50" y_start="323.20" x_end="1640.50" y_end="323.20"></cross_section> 
+<vertex id="120" x="2268.00" z="-304.00"></vertex> 
+<vertex id="121" x="0.00" z="-304.00"></vertex> 
+<vertex id="122" x="0.00" z="0.00"></vertex> 
+<vertex id="123" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="120 121 122 123 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="31" x_start="-627.50" y_start="335.84" x_end="1640.50" y_end="335.84"></cross_section> 
+<vertex id="124" x="2268.00" z="-304.00"></vertex> 
+<vertex id="125" x="0.00" z="-304.00"></vertex> 
+<vertex id="126" x="0.00" z="0.00"></vertex> 
+<vertex id="127" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="124 125 126 127 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="32" x_start="-627.50" y_start="348.48" x_end="1640.50" y_end="348.48"></cross_section> 
+<vertex id="128" x="2268.00" z="-304.00"></vertex> 
+<vertex id="129" x="0.00" z="-304.00"></vertex> 
+<vertex id="130" x="0.00" z="0.00"></vertex> 
+<vertex id="131" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="128 129 130 131 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="33" x_start="-627.50" y_start="361.12" x_end="1640.50" y_end="361.12"></cross_section> 
+<vertex id="132" x="2268.00" z="-304.00"></vertex> 
+<vertex id="133" x="0.00" z="-304.00"></vertex> 
+<vertex id="134" x="0.00" z="0.00"></vertex> 
+<vertex id="135" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="132 133 134 135 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="34" x_start="-627.50" y_start="373.76" x_end="1640.50" y_end="373.76"></cross_section> 
+<vertex id="136" x="2268.00" z="-304.00"></vertex> 
+<vertex id="137" x="0.00" z="-304.00"></vertex> 
+<vertex id="138" x="0.00" z="0.00"></vertex> 
+<vertex id="139" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="136 137 138 139 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="35" x_start="-627.50" y_start="386.40" x_end="1640.50" y_end="386.40"></cross_section> 
+<vertex id="140" x="2268.00" z="-304.00"></vertex> 
+<vertex id="141" x="0.00" z="-304.00"></vertex> 
+<vertex id="142" x="0.00" z="0.00"></vertex> 
+<vertex id="143" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="140 141 142 143 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="36" x_start="-627.50" y_start="399.04" x_end="1640.50" y_end="399.04"></cross_section> 
+<vertex id="144" x="2268.00" z="-304.00"></vertex> 
+<vertex id="145" x="0.00" z="-304.00"></vertex> 
+<vertex id="146" x="0.00" z="0.00"></vertex> 
+<vertex id="147" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="144 145 146 147 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="37" x_start="-627.50" y_start="411.68" x_end="1640.50" y_end="411.68"></cross_section> 
+<vertex id="148" x="2268.00" z="-304.00"></vertex> 
+<vertex id="149" x="0.00" z="-304.00"></vertex> 
+<vertex id="150" x="0.00" z="0.00"></vertex> 
+<vertex id="151" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="148 149 150 151 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="38" x_start="-627.50" y_start="424.32" x_end="1640.50" y_end="424.32"></cross_section> 
+<vertex id="152" x="2268.00" z="-304.00"></vertex> 
+<vertex id="153" x="0.00" z="-304.00"></vertex> 
+<vertex id="154" x="0.00" z="0.00"></vertex> 
+<vertex id="155" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="152 153 154 155 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="39" x_start="-627.50" y_start="436.96" x_end="1640.50" y_end="436.96"></cross_section> 
+<vertex id="156" x="2268.00" z="-304.00"></vertex> 
+<vertex id="157" x="0.00" z="-304.00"></vertex> 
+<vertex id="158" x="0.00" z="0.00"></vertex> 
+<vertex id="159" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="156 157 158 159 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="40" x_start="-627.50" y_start="449.60" x_end="1640.50" y_end="449.60"></cross_section> 
+<vertex id="160" x="2268.00" z="-304.00"></vertex> 
+<vertex id="161" x="0.00" z="-304.00"></vertex> 
+<vertex id="162" x="0.00" z="0.00"></vertex> 
+<vertex id="163" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="160 161 162 163 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="41" x_start="-627.50" y_start="462.24" x_end="1640.50" y_end="462.24"></cross_section> 
+<vertex id="164" x="2268.00" z="-304.00"></vertex> 
+<vertex id="165" x="0.00" z="-304.00"></vertex> 
+<vertex id="166" x="0.00" z="0.00"></vertex> 
+<vertex id="167" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="164 165 166 167 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="42" x_start="-627.50" y_start="474.88" x_end="1640.50" y_end="474.88"></cross_section> 
+<vertex id="168" x="2268.00" z="-304.00"></vertex> 
+<vertex id="169" x="0.00" z="-304.00"></vertex> 
+<vertex id="170" x="0.00" z="0.00"></vertex> 
+<vertex id="171" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="168 169 170 171 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="43" x_start="-627.50" y_start="487.52" x_end="1640.50" y_end="487.52"></cross_section> 
+<vertex id="172" x="2268.00" z="-304.00"></vertex> 
+<vertex id="173" x="0.00" z="-304.00"></vertex> 
+<vertex id="174" x="0.00" z="0.00"></vertex> 
+<vertex id="175" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="172 173 174 175 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="44" x_start="-627.50" y_start="500.16" x_end="1640.50" y_end="500.16"></cross_section> 
+<vertex id="176" x="2268.00" z="-304.00"></vertex> 
+<vertex id="177" x="0.00" z="-304.00"></vertex> 
+<vertex id="178" x="0.00" z="0.00"></vertex> 
+<vertex id="179" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="176 177 178 179 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="45" x_start="-627.50" y_start="512.80" x_end="1640.50" y_end="512.80"></cross_section> 
+<vertex id="180" x="2268.00" z="-304.00"></vertex> 
+<vertex id="181" x="0.00" z="-304.00"></vertex> 
+<vertex id="182" x="0.00" z="0.00"></vertex> 
+<vertex id="183" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="180 181 182 183 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="46" x_start="-627.50" y_start="525.44" x_end="1640.50" y_end="525.44"></cross_section> 
+<vertex id="184" x="2268.00" z="-304.00"></vertex> 
+<vertex id="185" x="0.00" z="-304.00"></vertex> 
+<vertex id="186" x="0.00" z="0.00"></vertex> 
+<vertex id="187" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="184 185 186 187 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="47" x_start="-627.50" y_start="538.08" x_end="1640.50" y_end="538.08"></cross_section> 
+<vertex id="188" x="2268.00" z="-304.00"></vertex> 
+<vertex id="189" x="0.00" z="-304.00"></vertex> 
+<vertex id="190" x="0.00" z="0.00"></vertex> 
+<vertex id="191" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="188 189 190 191 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="48" x_start="-627.50" y_start="550.72" x_end="1640.50" y_end="550.72"></cross_section> 
+<vertex id="192" x="2268.00" z="-304.00"></vertex> 
+<vertex id="193" x="0.00" z="-304.00"></vertex> 
+<vertex id="194" x="0.00" z="0.00"></vertex> 
+<vertex id="195" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="192 193 194 195 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="49" x_start="-627.50" y_start="563.36" x_end="1640.50" y_end="563.36"></cross_section> 
+<vertex id="196" x="2268.00" z="-304.00"></vertex> 
+<vertex id="197" x="0.00" z="-304.00"></vertex> 
+<vertex id="198" x="0.00" z="0.00"></vertex> 
+<vertex id="199" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="196 197 198 199 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="50" x_start="-627.50" y_start="576.00" x_end="1640.50" y_end="576.00"></cross_section> 
+<vertex id="200" x="2268.00" z="-304.00"></vertex> 
+<vertex id="201" x="0.00" z="-304.00"></vertex> 
+<vertex id="202" x="0.00" z="0.00"></vertex> 
+<vertex id="203" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="200 201 202 203 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="51" x_start="-627.50" y_start="588.64" x_end="1640.50" y_end="588.64"></cross_section> 
+<vertex id="204" x="2268.00" z="-304.00"></vertex> 
+<vertex id="205" x="0.00" z="-304.00"></vertex> 
+<vertex id="206" x="0.00" z="0.00"></vertex> 
+<vertex id="207" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="204 205 206 207 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="52" x_start="-627.50" y_start="601.28" x_end="1640.50" y_end="601.28"></cross_section> 
+<vertex id="208" x="2268.00" z="-304.00"></vertex> 
+<vertex id="209" x="0.00" z="-304.00"></vertex> 
+<vertex id="210" x="0.00" z="0.00"></vertex> 
+<vertex id="211" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="208 209 210 211 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="53" x_start="-627.50" y_start="613.92" x_end="1640.50" y_end="613.92"></cross_section> 
+<vertex id="212" x="2268.00" z="-304.00"></vertex> 
+<vertex id="213" x="0.00" z="-304.00"></vertex> 
+<vertex id="214" x="0.00" z="0.00"></vertex> 
+<vertex id="215" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="212 213 214 215 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="54" x_start="-627.50" y_start="626.56" x_end="1640.50" y_end="626.56"></cross_section> 
+<vertex id="216" x="2268.00" z="-304.00"></vertex> 
+<vertex id="217" x="0.00" z="-304.00"></vertex> 
+<vertex id="218" x="0.00" z="0.00"></vertex> 
+<vertex id="219" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="216 217 218 219 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="55" x_start="-627.50" y_start="639.20" x_end="1640.50" y_end="639.20"></cross_section> 
+<vertex id="220" x="2268.00" z="-304.00"></vertex> 
+<vertex id="221" x="0.00" z="-304.00"></vertex> 
+<vertex id="222" x="0.00" z="0.00"></vertex> 
+<vertex id="223" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="220 221 222 223 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="56" x_start="-627.50" y_start="651.84" x_end="1640.50" y_end="651.84"></cross_section> 
+<vertex id="224" x="2268.00" z="-304.00"></vertex> 
+<vertex id="225" x="0.00" z="-304.00"></vertex> 
+<vertex id="226" x="0.00" z="0.00"></vertex> 
+<vertex id="227" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="224 225 226 227 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="57" x_start="-627.50" y_start="664.48" x_end="1640.50" y_end="664.48"></cross_section> 
+<vertex id="228" x="2268.00" z="-304.00"></vertex> 
+<vertex id="229" x="0.00" z="-304.00"></vertex> 
+<vertex id="230" x="0.00" z="0.00"></vertex> 
+<vertex id="231" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="228 229 230 231 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="58" x_start="-627.50" y_start="677.12" x_end="1640.50" y_end="677.12"></cross_section> 
+<vertex id="232" x="2268.00" z="-304.00"></vertex> 
+<vertex id="233" x="0.00" z="-304.00"></vertex> 
+<vertex id="234" x="0.00" z="0.00"></vertex> 
+<vertex id="235" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="232 233 234 235 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="59" x_start="-627.50" y_start="689.76" x_end="1640.50" y_end="689.76"></cross_section> 
+<vertex id="236" x="2268.00" z="-304.00"></vertex> 
+<vertex id="237" x="0.00" z="-304.00"></vertex> 
+<vertex id="238" x="0.00" z="0.00"></vertex> 
+<vertex id="239" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="236 237 238 239 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="60" x_start="-627.50" y_start="702.40" x_end="1640.50" y_end="702.40"></cross_section> 
+<vertex id="240" x="2268.00" z="-304.00"></vertex> 
+<vertex id="241" x="0.00" z="-304.00"></vertex> 
+<vertex id="242" x="0.00" z="0.00"></vertex> 
+<vertex id="243" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="240 241 242 243 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="61" x_start="-627.50" y_start="715.04" x_end="1640.50" y_end="715.04"></cross_section> 
+<vertex id="244" x="2268.00" z="-304.00"></vertex> 
+<vertex id="245" x="0.00" z="-304.00"></vertex> 
+<vertex id="246" x="0.00" z="0.00"></vertex> 
+<vertex id="247" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="244 245 246 247 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="62" x_start="-627.50" y_start="727.68" x_end="1640.50" y_end="727.68"></cross_section> 
+<vertex id="248" x="2268.00" z="-304.00"></vertex> 
+<vertex id="249" x="0.00" z="-304.00"></vertex> 
+<vertex id="250" x="0.00" z="0.00"></vertex> 
+<vertex id="251" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="248 249 250 251 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="63" x_start="-627.50" y_start="740.32" x_end="1640.50" y_end="740.32"></cross_section> 
+<vertex id="252" x="2268.00" z="-304.00"></vertex> 
+<vertex id="253" x="0.00" z="-304.00"></vertex> 
+<vertex id="254" x="0.00" z="0.00"></vertex> 
+<vertex id="255" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="252 253 254 255 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="64" x_start="-627.50" y_start="752.96" x_end="1640.50" y_end="752.96"></cross_section> 
+<vertex id="256" x="2268.00" z="-304.00"></vertex> 
+<vertex id="257" x="0.00" z="-304.00"></vertex> 
+<vertex id="258" x="0.00" z="0.00"></vertex> 
+<vertex id="259" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="256 257 258 259 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="65" x_start="-627.50" y_start="765.60" x_end="1640.50" y_end="765.60"></cross_section> 
+<vertex id="260" x="2268.00" z="-304.00"></vertex> 
+<vertex id="261" x="0.00" z="-304.00"></vertex> 
+<vertex id="262" x="0.00" z="0.00"></vertex> 
+<vertex id="263" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="260 261 262 263 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="66" x_start="-627.50" y_start="778.24" x_end="1640.50" y_end="778.24"></cross_section> 
+<vertex id="264" x="2268.00" z="-304.00"></vertex> 
+<vertex id="265" x="0.00" z="-304.00"></vertex> 
+<vertex id="266" x="0.00" z="0.00"></vertex> 
+<vertex id="267" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="264 265 266 267 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="67" x_start="-627.50" y_start="790.88" x_end="1640.50" y_end="790.88"></cross_section> 
+<vertex id="268" x="2268.00" z="-304.00"></vertex> 
+<vertex id="269" x="0.00" z="-304.00"></vertex> 
+<vertex id="270" x="0.00" z="0.00"></vertex> 
+<vertex id="271" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="268 269 270 271 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="68" x_start="-627.50" y_start="803.52" x_end="1640.50" y_end="803.52"></cross_section> 
+<vertex id="272" x="2268.00" z="-304.00"></vertex> 
+<vertex id="273" x="0.00" z="-304.00"></vertex> 
+<vertex id="274" x="0.00" z="0.00"></vertex> 
+<vertex id="275" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="272 273 274 275 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="69" x_start="-627.50" y_start="816.16" x_end="1640.50" y_end="816.16"></cross_section> 
+<vertex id="276" x="2268.00" z="-304.00"></vertex> 
+<vertex id="277" x="0.00" z="-304.00"></vertex> 
+<vertex id="278" x="0.00" z="0.00"></vertex> 
+<vertex id="279" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="276 277 278 279 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="70" x_start="-627.50" y_start="828.80" x_end="1640.50" y_end="828.80"></cross_section> 
+<vertex id="280" x="2268.00" z="-304.00"></vertex> 
+<vertex id="281" x="0.00" z="-304.00"></vertex> 
+<vertex id="282" x="0.00" z="0.00"></vertex> 
+<vertex id="283" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="280 281 282 283 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="71" x_start="-627.50" y_start="841.44" x_end="1640.50" y_end="841.44"></cross_section> 
+<vertex id="284" x="2268.00" z="-304.00"></vertex> 
+<vertex id="285" x="0.00" z="-304.00"></vertex> 
+<vertex id="286" x="0.00" z="0.00"></vertex> 
+<vertex id="287" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="284 285 286 287 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="72" x_start="-627.50" y_start="854.08" x_end="1640.50" y_end="854.08"></cross_section> 
+<vertex id="288" x="2268.00" z="-304.00"></vertex> 
+<vertex id="289" x="0.00" z="-304.00"></vertex> 
+<vertex id="290" x="0.00" z="0.00"></vertex> 
+<vertex id="291" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="288 289 290 291 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="73" x_start="-627.50" y_start="866.72" x_end="1640.50" y_end="866.72"></cross_section> 
+<vertex id="292" x="2268.00" z="-304.00"></vertex> 
+<vertex id="293" x="0.00" z="-304.00"></vertex> 
+<vertex id="294" x="0.00" z="0.00"></vertex> 
+<vertex id="295" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="292 293 294 295 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="74" x_start="-627.50" y_start="879.36" x_end="1640.50" y_end="879.36"></cross_section> 
+<vertex id="296" x="2268.00" z="-304.00"></vertex> 
+<vertex id="297" x="0.00" z="-304.00"></vertex> 
+<vertex id="298" x="0.00" z="0.00"></vertex> 
+<vertex id="299" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="296 297 298 299 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+<geometry><cross_section name="75" x_start="-627.50" y_start="1354.50" x_end="1640.50" y_end="1354.50"></cross_section> 
+<vertex id="300" x="2268.00" z="-304.00"></vertex> 
+<vertex id="301" x="0.00" z="-304.00"></vertex> 
+<vertex id="302" x="0.00" z="0.00"></vertex> 
+<vertex id="303" x="2268.00" z="0.00"></vertex> 
+<entry type="polygon" id_list="300 301 302 303 "> 
+<property name="body" value="reference"></property> 
+</entry> 
+</geometry> 
+</geodata>
