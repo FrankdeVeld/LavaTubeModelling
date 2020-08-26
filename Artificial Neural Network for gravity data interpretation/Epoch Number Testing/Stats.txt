@@ -1,0 +1,39 @@
+5 Epochs:
+Average total spread test: 0.29801600727718297
+Average std total spread test: 0.04598788285742021
+Average total spread train: 0.3092055857161695
+Average std total spread train: 0.048128360118097166
+Final loss: 0.056420072631288946
+Final loss_val: 0.05657566614297914
+
+10 Epochs:
+Average total spread test: 0.2637419230171778
+Average std total spread test: 0.036315773413089086
+Average total spread train: 0.2740693696122882
+Average std total spread train: 0.0376847964907328
+Final loss: 0.036751626518042875
+Final loss_val: 0.037002399438320545
+
+20 Epochs:
+Average total spread test: 0.29364985526331594
+Average std total spread test: 0.039575348752182424
+Average total spread train: 0.3041746104963311
+Average std total spread train: 0.03989345053619406
+Final loss: 0.035671163046185575
+Final loss_val: 0.041396167079469436
+
+50 Epochs:
+Average total spread test: 0.4836616737951146
+Average std total spread test: 0.05914778762560924
+Average total spread train: 0.48159281230719525
+Average std total spread train: 0.053117126089417356
+Final loss: 0.045957951330233345
+Final loss_val: 0.06130591463936289
+
+100 Epochs:
+Average total spread test: 0.821287422063041
+Average std total spread test: 0.10373308718982929
+Average total spread train: 0.8093820592476414
+Average std total spread train: 0.09328933830482797
+Final loss: 0.04384665059130419
+Final loss_val: 0.04700898802375925

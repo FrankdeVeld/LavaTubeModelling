@@ -1,0 +1,53 @@
+512 Neurons:
+Average total spread 0.6258931362980307
+Average std total spread 0.0811288646507505
+Final loss: 0.0690284493246276
+Final loss_val: 0.08145523443886923
+
+256 Neurons:
+Average total spread 0.36988007280508417
+Average std total spread 0.05166186076158347
+Final loss: 0.03482
+Final loss_val: 0.03516895
+
+128 Neurons:
+Average total spread 0.3475819546558902
+Average std total spread 0.046652157223541324
+Final loss: 0.0347998
+Final loss_val: 0.03518061
+
+64 Neurons:
+Average total spread 0.2756846507042808
+Average std total spread 0.037004525914001316
+Final loss: 0.03388486
+Final loss_val: 0.03826277
+
+32 Neurons:
+Average total spread 0.249174862834
+Average std total spread 0.03387426252
+Final loss: 0.03516868
+Final loss_val: 0.04364276
+
+16 Neurons:
+Average total spread 0.2289873344658262
+Average std total spread 0.029041124644745085
+Final loss: 0.03614229
+Final loss_val: 0.03614229
+
+8 Neurons:
+Average total spread 0.2538606081782028
+Average std total spread 0.034037214719353656
+Final loss: 0.0357879186766016
+Final loss_val: 0.04064447143373449
+
+4 Neurons:
+Average total spread 0.29715123983069913
+Average std total spread 0.03818755134404724
+Final loss: 0.04088455881416497
+Final loss_val: 0.031160693137729022
+
+2 Neurons:
+Average total spread 0.7921511325862359
+Average std total spread 0.00047213569005108587
+Final loss: 0.1719474537332125
+Final loss_val: 0.2438388167772029

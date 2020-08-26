@@ -1,0 +1,30 @@
+% Plotting for the learning rate investigation
+% Constant: Data points 100x15, epochs 10, hidden neurons 64
+% Variable: initial learning rate
+
+Neuron_number = [2,4,8,16,32,64,128,256,512];
+Av_tot_spread = [0.7921511325862359, 0.29715123983069913, 0.2538606081782028, 0.2289873344658262, 0.249174862834, 0.2756846507042808, 0.3475819546558902, 0.36988007280508417, 0.6258931362980307];
+Av_std_tot_spread = [];
+Final_loss = [0.056420072631288946, 0.036751626518042875, 0.035671163046185575, 0.045957951330233345, 0.04384665059130419];
+Final_loss_val = [0.05657566614297914, 0.037002399438320545, 0.041396167079469436, 0.06130591463936289, 0.04700898802375925];
+
+figure()
+hold on
+grid on
+scatter(Neuron_number,Av_tot_spread,30,'r','d','filled')
+scatter(Neuron_number,Av_std_tot_spread,30,'r','filled')
+title('Performance metrics, spreading, for learning rate variation')
+xlabel('Number of epochs (-)','interpreter','latex')
+ylabel('Average spread / Average STD spread (-)','interpreter','latex')
+legend('Average spread','Average STD spread')
+
+figure()
+hold on
+grid on
+scatter(Neuron_number,Final_loss,30,'r','d','filled')
+scatter(Neuron_number,Final_loss_val,30,'b','d','filled')
+plot(Neuron_number,(Final_loss+Final_loss_val)./2,'k--')
+title('Performance metrics, loss, for learning rate variation')
+xlabel('Number of epochs (-)','interpreter','latex')
+ylabel('Final loss value (-)','interpreter','latex')
+legend('Final loss value - training','Final loss value - validating','Average trend')

@@ -1,0 +1,32 @@
+Learning rate 0.1:
+Average total spread test: 0.20064648287943543
+Average std total spread test: 0.03117120847025674
+Average total spread train: 0.20865563877290122
+Average std total spread train: 0.03288671394725525
+Final loss: 0.038721739537134196
+Final loss_val: 0.04168517032317177
+
+Learning rate 0.25:
+Average total spread test: 0.2637419230171778
+Average std total spread test: 0.036315773413089086
+Average total spread train: 0.2740693696122882
+Average std total spread train: 0.0376847964907328
+Final loss: 0.036751626518042875
+Final loss_val: 0.037002399438320545
+
+Learning rate 0.5:
+Average total spread test: 0.42387781882684983
+Average std total spread test: 0.052974678872124
+Average total spread train: 0.43397732755558305
+Average std total spread train: 0.05060864139842198
+Final loss: 0.04269230204119229
+Final loss_val: 0.04756331021598333
+
+Learning rate 1:
+Average total spread test: 0.751093707294318
+Average std total spread test: 0.08742165746710026
+Average total spread train: 0.7448629124014334
+Average std total spread train: 0.08128232675861599
+Final loss: 0.053612449145816345
+Final loss_val: 0.07057534183649174
+
