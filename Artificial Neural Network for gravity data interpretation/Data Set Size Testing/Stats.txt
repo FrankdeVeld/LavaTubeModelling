@@ -1,3 +1,19 @@
+10x15 data points:
+Average total spread test: 0.4671557561671985
+Average std total spread test: 0.055098830862402484
+Average total spread train: 0.4450492709280156
+Average std total spread train: 0.03460992566452257
+Final loss: 0.2034260192654926
+Final loss_val: 0.1481759466916156
+
+50x15 data points:
+Average total spread test: 0.37301381613566376
+Average std total spread test: 0.06297294146743823
+Average total spread train: 0.37155301779143446
+Average std total spread train: 0.054639314601349576
+Final loss: 0.057399576300880245
+Final loss_val: 0.04167237535725126
+
 100x15 data points:
 Average total spread test: 0.2637419230171778
 Average std total spread test: 0.036315773413089086
@@ -13,3 +29,11 @@ Average total spread train: 0.4495855079197263
 Average std total spread train: 0.05801886143756689
 Final loss: 0.05333092629741505
 Final loss_val: 0.06228338957767713
+
+10000x15 data points:
+Average total spread test: 2.4334072021193336
+Average std total spread test: 0.30614249656379
+Average total spread train: 2.4450386833719127
+Average std total spread train: 0.3093562539364917
+Final loss: 0.033581884603366356
+Final loss_val: 0.033760935303485354
