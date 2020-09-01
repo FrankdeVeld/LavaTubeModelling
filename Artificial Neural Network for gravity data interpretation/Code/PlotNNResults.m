@@ -1,3 +1,9 @@
+% Author: Frank de Veld
+% Code for plotting output data from the MatLab ANN 
+% Version: 1.0
+% Date: August 25th, 2020
+
+
 % Outputs = NNTest1_outputs';
 % True_output = Labels';
 % 

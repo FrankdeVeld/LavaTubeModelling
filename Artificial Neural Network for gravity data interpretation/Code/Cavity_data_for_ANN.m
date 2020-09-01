@@ -1,4 +1,10 @@
-Results_40 = importdata('D:\Even Dropbox Stage zooi\Stage\Documenten Lava Tubes\IGMAS\Database\Database Result Files\Results\LAGOS_MM_1_MD_3_CD_40_SSF_4_3D.mat');
+% Author: Frank de Veld
+% Code for obtaining input data for the ANN's from previously obtained
+% results
+% Version: 1.0
+% Date: August 25th, 2020
+
+Results_40 = importdata('\\Results\LAGOS_MM_1_MD_3_CD_40_SSF_4_3D.mat');
 
 Max_g = 0;
 g_index = 0;

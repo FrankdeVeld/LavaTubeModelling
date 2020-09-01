@@ -1,3 +1,8 @@
+% Author: Frank de Veld
+% Code for generating input data for the MatLab ANN
+% Version: 1.0
+% Date: August 25th, 2020
+
 Features = [];
 Labels = [];
 
